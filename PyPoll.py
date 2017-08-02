@@ -99,12 +99,16 @@ print(f"Winner: {max_keys}")
 output_path = os.path.join(root_path, "output")
 csvpath = os.path.join(output_path, "PollSummary.csv")
 with open (csvpath, "w", newline="") as csvfile:
-	fieldnames = ["Candidate", "percent", "vote"]   
-writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-# writer.writeheader()
-writer.writerow({"Candidate": list[0], "percent": round(count1/total_number*100,0), "vote": count1})
-writer.writerow({"Candidate": list[1], "percent": round(count2/total_number*100,0), "vote": count2})
-writer.writerow({"Candidate": list[2], "percent": round(count3/total_number*100,0), "vote": count3})
-writer.writerow({"Candidate": list[3], "percent": round(count4/total_number*100,0), "vote": count4})
-
-
+#     fieldnames = ["Candidate", "percent", "vote"]   
+#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    csvwriter = csv.writer(csvfile, delimiter=',')
+    csvwriter.writerow(["", "Total votes", ""])
+    csvwriter.writerow(["",total_number, ""])
+    csvwriter.writerow(["Candidate", "Percent", "Vote"])
+    csvwriter.writerow([list[0],round(count1/total_number*100,0), count1 ] )
+    csvwriter.writerow([list[1],round(count2/total_number*100,0), count2 ] )
+    csvwriter.writerow([list[2],round(count3/total_number*100,0), count3 ] )
+    csvwriter.writerow([list[3],round(count4/total_number*100,0), count4 ] )
+    csvwriter.writerow(["", "Winner", ""])
+    csvwriter.writerow(["", max_keys, ""])
+    
