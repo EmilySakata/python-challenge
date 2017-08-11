@@ -73,12 +73,12 @@ employee_data2["State"].replace(us_state_abbrev, inplace=True)
 employee_data1['DOB'] = pd.to_datetime(employee_data1.DOB)
 employee_data1['DOB'] = employee_data1['DOB'].dt.strftime('%m/%d/%Y')
 
-employee_data2['DOB'] = pd.to_datetime(employee_data1.DOB)
-employee_data2['DOB'] = employee_data1['DOB'].dt.strftime('%m/%d/%Y')
+employee_data2['DOB'] = pd.to_datetime(employee_data2.DOB)
+employee_data2['DOB'] = employee_data2['DOB'].dt.strftime('%m/%d/%Y')
 
 # replace the first 6 digit of the SSN with star
 employee_data1["SSN"] = "***-**-" + employee_data1['SSN'].str[7:]
-employee_data2["SSN"] = "***-**-" + employee_data1['SSN'].str[7:]
+employee_data2["SSN"] = "***-**-" + employee_data2['SSN'].str[7:]
 
 # output dataframe to cvs file
 employee_data1.to_csv('new_employee_data1.csv', index=False, header=True)
